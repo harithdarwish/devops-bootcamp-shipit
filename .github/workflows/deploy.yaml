@@ -1,12 +1,12 @@
 name: deploy
 on: [push, workflow_dispatch]
-jobs:
 
- update:
+jobs:
+  update:
     runs-on: ubuntu-latest
     steps:
-      - run: apt update -y
-  
+      - run: sudo apt update -y
+
   say-hello:
     runs-on: ubuntu-latest
     steps:
