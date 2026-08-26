@@ -1,5 +1,5 @@
 name: deploy
-on: [push, workflow_dispatch]
+on: [push, pull_request, workflow_dispatch]
 
 permissions:
   contents: read
@@ -14,12 +14,12 @@ jobs:
         working-directory: launchpad
 
     steps:
-      - uses: actions/checkout@v7
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
       - run: npm clean-install
       - run: npm run test
       - run: npm run build
-      - uses: actions/upload-pages-artifact@v5
+      - uses: actions/upload-pages-artifact@v3
         with:
           path: launchpad/dist
-      - uses: actions/deploy-pages@v5
+      - uses: actions/deploy-pages@v4
